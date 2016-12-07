@@ -1,0 +1,5 @@
+#在开发Python应用程序的时候，系统安装的Python3只有一个版本：3.4。所有第三方的包都会被pip安装到Python3的site-packages目录下。
+#virtualenv是如何创建“独立”的Python运行环境的呢？
+#原理很简单，就是把系统Python复制一份到virtualenv的环境，
+#用命令source venv/bin/activate进入一个virtualenv环境时，
+#virtualenv会修改相关环境变量，让命令python和pip均指向当前的virtualenv环境
