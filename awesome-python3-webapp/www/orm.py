@@ -55,7 +55,9 @@ async def select(sql,args,size=None):
 		return rs
 		
 async def execute(sql,args,autocommit=True):
-	log(sql)
+	print("=======================")
+	print(sql)
+	print(args)
 	async with __pool.get() as conn:
 		if not autocommit:
 			await conn.begin()
@@ -131,10 +133,11 @@ class ModelMetaclass(type):
 		for k in mappings.keys():
 			attrs.pop(k)
 		escaped_fields = list(map(lambda f:'`%s`' % f,fields))
-		attrs['__mappings__']=mappings #保存属性和列的映射不关系
+		attrs['__mappings__']=mappings #保存属性和列的映射关系
 		attrs['__table__']=tableName
 		attrs['__primary_key__']=primaryKey #主键属性名
 		attrs['__fields__'] = fields #除主键外的属性名
+		#构造默认的SELECT,INSERT,UPDATE和DELETE语句
 		attrs['__select__'] = 'select `%s`,%s from `%s`' % (primaryKey,', '.join(escaped_fields),tableName)
 		attrs['__insert__'] = 'insert into `%s` (%s,`%s`) values(%s)' % (tableName,', '.join(escaped_fields),primaryKey,create_args_string(len(escaped_fields)+1))
 		attrs['__update__'] = 'update `%s` set %s where `%s`=?' % (tableName,', '.join(map(lambda f:'`%s`=?' % (mappings.get(f).name or f),fields)),primaryKey)
@@ -226,6 +229,7 @@ class Model(dict,metaclass=ModelMetaclass):
 		rows = await execute(self.__update__,args)
 		if rows != 1:
 			logging.warn('fail to update by primary key: affected rows:%s' % rows)
+			
 	async def remove(self):
 		args = [self.getValue(self.__primary_key__)]
 		rows = await execute(self.__delete__,args)
