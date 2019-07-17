@@ -3,7 +3,7 @@
 import pymysql
 import pymysql.cursors
 
-conn = pymysql.connect(host='localhost', port=3306, user='root', passwd='root',db='mybase',charset='utf8')
+conn = pymysql.connect(host='localhost', port=3306, user='root', passwd='root',db='python_db',charset='utf8')
 
 cur = conn.cursor()
 cur.execute("SELECT * FROM users")

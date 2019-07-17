@@ -5,7 +5,10 @@ def fib(max):
 		a,b=b,a+b
 		n = n + 1
 	return "done"
+
+
 f=fib(8)
+
 while True:
 	try:
 		x = next(f)

@@ -1,3 +1,5 @@
+#Iterable迭代
+
 #只要isinstance为True的都可以使用迭代
 from collections import Iterable
 

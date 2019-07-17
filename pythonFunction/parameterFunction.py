@@ -39,10 +39,10 @@ def cal(*numbers):
 def person(name,age,**kw):
 	print("name:",name,"age:",age,"other:",kw)
 
-#person("zhangsan",19)
-#other={"job":"engineer","city":"shanghai"}
-#person("zhangsan",19,city=other['city'],job=other['job'])
-#person("zhangsan",19,**other)
+person("zhangsan",19)
+other={"job":"engineer","city":"shanghai"}
+person("zhangsan",19,city=other['city'],job=other['job'])
+person("zhangsan",19,**other)
 
 #命名关键字参数 
 def person2(name,age,**kw):
