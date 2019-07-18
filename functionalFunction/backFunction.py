@@ -13,7 +13,7 @@ def lazySum(*args):
 f=lazySum(1,33,4,5,5,2)
 f1=lazySum(1,33,4,5,5,2)
 print("f:",f)
-print("f==f1:",f==f1)
+print("f==f1:",f==f1) #不同时间返回的函数功能一样，但不能直接相等
 print("f():",f())
 
 

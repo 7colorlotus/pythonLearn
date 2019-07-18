@@ -4,7 +4,7 @@ def by_name(t):
 	def getName(tt):
 		return tt[0]
 	return list(sorted(t,key=getName))
-	
+
 print("by_name:",by_name([('Bob', 75), ('Adam', 92), ('Bart', 66), ('Lisa', 88)]))
 
 
@@ -16,3 +16,6 @@ def by_score(t):
 	return list(sorted(t,key=getScore,reverse=True))
 	
 print("by_score:",by_score([('Bob', 75), ('Adam', 92), ('Bart', 66), ('Lisa', 88)]))
+
+
+print(sorted((1,3,5,7,3,2,1,0)))

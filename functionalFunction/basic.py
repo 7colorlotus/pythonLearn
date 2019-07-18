@@ -1,4 +1,5 @@
-def sumF(a,b,f):
+def sum_f(a, b, f):
 	return f(a)+f(b)
-	
-print(sumF(2,-3,abs))
+
+
+print(sum_f(2, -3, abs))

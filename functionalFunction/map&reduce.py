@@ -1,4 +1,6 @@
-#利用map()函数，把用户输入的不规范的英文名字，变为首字母大写，其他小写的规范名字。输入：['adam', 'LISA', 'barT']，输出：['Adam', 'Lisa', 'Bart']：
+#利用map()函数，把用户输入的不规范的英文名字，变为首字母大写，其他小写的规范名字。输入：['adam', 'LISA', 'barT']，
+# 输出：['Adam', 'Lisa', 'Bart']：
+
 
 def normalize(name):
     result = ''
@@ -14,6 +16,7 @@ print(list(map(normalize,['adam', 'LISA', 'barT'])))
 
 
 #Python提供的sum()函数可以接受一个list并求和，请编写一个prod()函数，可以接受一个list并利用reduce()求积：
+
 from functools import reduce
 def prod(L):
 	def mul(x,y):
@@ -38,3 +41,12 @@ def str2float(s):
 	result = result / pow(10,length)
 	return result
 print(str2float("123.5633433"))
+
+
+def last_name(name):
+	if(isinstance (name, str)):
+		return name.split(" ")[1];
+	else:
+		return 0
+
+print(list(map(last_name, ["zhang san","li si","wang wu", 123])))
