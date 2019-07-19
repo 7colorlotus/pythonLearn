@@ -1,6 +1,8 @@
+# 使用mysql模块处理mysql数据库
+
 import pymysql.cursors
 
-# Connect to the database
+# 连接数据库
 connection = pymysql.connect(host='localhost',
                              user='root',
                              password='root',
@@ -10,19 +12,19 @@ connection = pymysql.connect(host='localhost',
 
 try:
     with connection.cursor() as cursor:
-        # Create a new record
-        sql = "INSERT INTO `users` (`email`, `password`) VALUES (%s, %s)"
-        cursor.execute(sql, ('webmaster@python.org', 'very-secret'))
+        # 插入一条记录
+        sql = "INSERT INTO `users` (`name`, `age`) VALUES (%s, %s)"
+        cursor.execute(sql, ('webmaster', '15'))
 
-    # connection is not autocommit by default. So you must commit to save
-    # your changes.
+    # 连接不是自动提交的，需要手动提交
     connection.commit()
 
     with connection.cursor() as cursor:
-        # Read a single record
-        sql = "SELECT `id`, `password` FROM `users` WHERE `email`=%s"
-        cursor.execute(sql, ('webmaster@python.org',))
-        result = cursor.fetchone()
+        # 读取一条记录
+        sql = "SELECT `id`, `age` FROM `users` WHERE `name`=%s"
+        cursor.execute(sql, ('webmaster'))
+        result = cursor.fetchall()
         print(result)
+
 finally:
     connection.close()
